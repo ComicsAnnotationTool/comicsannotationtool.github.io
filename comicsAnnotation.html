@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+
+<html>
+    
+<head>
+    <link rel="stylesheet" href="comicsAnnotation.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-firestore.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<body>
+    
+    <header>
+        <h3 style="text-align:center"> </h3>
+    </header>
+    
+    
+    <section>
+        <!-- Section 1 (Left side of page) - IMAGES from comics go here -->
+        <!-- <p id="pageNumComicImage">Page 1</p> -->
+        <section id="imageSection" class="indent-1">
+            <!-- Container for comics page - holds dots for panel and other placement of semantic information -->
+            <div id="comicPagesContainer" class="container">
+                <!-- Canvas element to hold  comic pages
+                 Note: original size was width: 600, height: 700-->
+                <canvas id="canvas" width="650" height="750">
+                    This browser does not support the HTML5 canvas element - sorry! 
+                </canvas>
+                
+                
+                <!-- Test button to make sure that the images have been preloaded
+                    <button type="button" onclick="testPreload()"> Click to add stored image</button> -->
+                
+                <!-- Old Click Version: Comic Page -->
+                <!--<img id="comicPage" src="comicPages/Page1.jpeg" alt="Page of a comic" class="shadow" onclick="true">-->
+                 <!-- Example panel indicator numbers that dynamically appear where the user clicks on the image
+                <div class="indicatedPosition", id="ip1"> 0 </div>
+                <div class="indicatedPosition2", id="ip2"> 3 </div>
+                  -->
+            </div>
+        </section>
+        
+        
+        
+        <!-- Section 2 (Right side of page) - ANNOTATION FORMS go here  -->
+        <section id = "semanticSection" class="indent-2">
+           
+          <!-- Start Button and Page Number Title -->
+          <div id="initialStartButtonContainer">
+                <button id="startAnnotationButton" onclick="putFirstComicPageOnCanvas()"> Start Annotation </button>
+            </div>
+          
+            <!-- Test Section for Firebase!
+            <div>
+                <form id="Test">
+                    <input type="text" name="name" placeholder="Cafe name">
+                    <input type="text" name="city" placeholder="Cafe city">
+                    <button>Add Cafe</button>
+                </form>
+            </div> -->
+              
+            <!-- Form Instructions and Task Buttons -->
+            <div id="panelIdSection">
+                
+            <!--    <img src="Instructions1.jpg" alt="Panel/Section ID Task Instructions">  -->
+                
+                <p>  </p>
+                
+                <div>
+                    <button id="startButton" type="button" class="panelIDButtons" onclick="recordRectsON(event)">Start Task</button>
+                </div>
+                
+                <div>
+                    <button id="clearLastRectButton" type="button" class="panelIDButtonsVersion2" onclick="clearLastDrawnRectangle(event)">Clear Last Rectangle</button>
+                
+                    <button id="clearButton" type="button" class="panelIDButtonsVersion2" onclick="recordRectsCLEAR(event)">Clear All Rectangles</button>
+                </div>
+                    <button id="endButton" type="button" class="panelIDButtons" onclick="recordRectsOFF(event)">End Task</button>
+                <div>
+                    
+                    
+                </div>
+                <!-- Debugging check: store click coordinates in a textarea
+                <label for="clickCoordsRecorded"> </label>
+                <textarea id="clickCoordsRecorded" rows="10" cols="30">
+                    Coordinates:
+                </textarea> -->
+             </div>
+            
+            
+        <!-- Scroll - just put a scroll around the semantic forms
+        <div id="scrollContainer" class="scroll">  -->
+             <!-- Semantic Form Instructions-->
+             <div id="panelNumSection" class="panelNumSectionFormat">
+    
+                <!-- State the number of panels/sections inputted by the user clicking on the comic image -->
+                <p id="panelCount"> </p>
+                
+                <div id="listContainer" class="listContainer" style="height: 100px; position: relative;">
+                
+                <div id="charactersListContainer" class="list1" style="max-height:100%;overflow:auto;">
+                    <!-- <label for="characterList" class="listLabel">Characters in this story so far: </label> -->
+                    <h2> Characters seen so far: </h2>
+                    <ul id="characterList" name="characterList" class="cList">
+                 <!--   <li> test1 </li>
+                        <li> test2 </li>
+                        <li> test3 </li>  -->
+                        </ul>
+                    </div>
+                
+                <div id="locationListContainer" class="list2" style="max-height:100%; overflow:auto;" >
+                    <!-- <label for="locationList" class="listLabel">Locations in this story so far: </labels> -->
+                    <h2> Locations seen so far: </h2>
+                    <ul id="locationList" name="locationList" class="lList">
+                  <!--  <li> test1 </li>
+                        <li> test2 </li>
+                        <li> test3 </li>
+                        <li> test4 </li>
+                        <li> test5 </li>
+                        <li> test6 </li>  -->
+                        </ul>
+                    </div>
+                
+                </div>
+                
+                <!-- <img src="Instructions2.jpg" alt="Semantic Form Task Instructions" height=200px > -->
+                
+                <!-- <p id="instructionsForSemanticForms"> Start annotating characters by clicking the "indicate characters" button, then click on all the characters in the panel/section. Give repeated characters the same label. If the characters appears in a section more than once, indicate each appearance separately. Don't forget to annotate the background as well! (Add an image here as well)</p> -->
+             </div>
+            
+            
+            
+            
+            <!-- The SEMANTIC FORM template -->
+            <!-- The number of panels that the user indicated above should be the number of semantic forms that appear -->
+            <div id="semanticForm" class="hidden">
+                <!-- Specify characters by assigning variables -->
+           <!--     <h3 id="panelNumFormHeading"> Panel 1 </h3> -->
+           
+                <!-- <h4 id="charHeading"> Characters: Identify and Describe  </h4>
+                
+                <div id="charTaskContainer" >
+                    
+                   <!-- Button created to start char id task, made for each new cloned semantic form in js
+                    <button id="newChar" type="button" onclick="startIndividualCharID(event)"> Indicate a Character </button> -->
+                    
+                    <!-- Button that are created in the js function tartIndividualCharID(event)
+                    <button id="startTaskCharID" type="button" onclick="startCharIDTask(event)"> Start Click </button>
+                    <button id="startTaskCharID" type="button" onclick="stopCharIDTask(event)"> End Click </button>
+                    <button id="offPanelChar" type="button" onclick="true"> Off Panel Character </button> -->
+                <!-- </div>
+                
+                <div id="charFormContainter">
+                    </div>
+    
+                <div id="backgroundFormContainer">
+                    
+                <!-- Specify detail in the background - created in js
+                <h4>Background </h4> -->
+                  <!--  <input type="radio" id="backgroundDrawn" name="background" value="backgroundDrawn">
+                        <label for="backgroundDrawn">Background is detailed</label><br>
+                    <input type="radio" id="backgroundEmpty" name="background" value="backgroundEmpty">
+                        <label for="backgroundEmpty">Background is empty</label><br>
+                           -->
+                <!-- </div> -->
+
+                
+             </div>
+            
+            
+             <!-- Containter to add clones of the semantic forms -->
+             <div id="semanticFormContainer" class="true" >
+             </div>
+             
+          
+    <!--    </div> End of Scroll Div-->
+          
+             <!-- Containter to add buttons to navigate between semantic forms -->
+             <div id="semanticButtonsContainer">
+             </div>
+             
+        </section>
+    </section>
+
+    
+    
+    <!-- Firebase SDK - placed in the bottom of the bosy tag, but before using any Firebase services -->
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first
+    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script> -->
+    
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-analytics.js">
+    </script>
+    
+    <script>
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAuZQ2Nbyi1UupCppz-QgkEEZKvshWBnJw",
+            authDomain: "annotationround2.firebaseapp.com",
+            projectId: "annotationround2",
+            storageBucket: "annotationround2.appspot.com",
+            messagingSenderId: "1016715410498",
+            appId: "1:1016715410498:web:cd10794ba6145b825c01db"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        const db = firebase.firestore(); // Reference to the database, interact with the database through this constant
+        //db.settings({timestampsInSnapshots: true}); // Avoid warnings and errors in the console - not needed in this version of firebase
+        
+    </script>
+    
+    <!-- Javascript file -->
+    <script type="text/javascript" src="comicsAnnotation.js"></script>
+
+        
+</body>
+    
+
+</html>

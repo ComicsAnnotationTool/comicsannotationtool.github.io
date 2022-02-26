@@ -1,0 +1,157 @@
+
+/* CSS for the Index Page */
+
+body {
+    background-color: #00BFFF;
+    
+}
+
+
+#titleContainer {
+    background-color: #004d66;
+    border: none;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.textCont {
+    margin: 50px;
+}
+
+h1 {
+    text-align: center;
+    font-family: monospace;
+    color: white;
+    font-size: 35px;
+}
+
+
+h2 {
+    text-align: center;
+    font-family: monospace;
+    color: white;
+    font-size: 28px;
+    
+}
+
+h3 {
+    text-align: center;
+    font-family: monospace;
+    color: white;
+    font-size: 30px;
+}
+
+
+#textContainer {
+    position:relative;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}
+
+p {
+    float: center;
+    font-family: monospace;
+    font-size: 20px;
+    margin: 40px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+
+
+#instructionsContainer {
+    text-align: center;
+}
+
+.divBackgroundStyle{
+    background-color: #004d66;
+    padding: 1px;
+    margin-bottom: 20px;
+}
+
+
+
+#videoInstructionsContainer {
+    text-align: center; 
+}
+
+
+.labelFont {
+    font-family: monospace;
+    font-size: 30px;
+    color: #004d66;
+    
+}
+
+
+#startContainer {
+    text-align: center;
+}
+
+.startContainer {
+      position: relative;
+      height: 400px;
+}
+
+.annotationChoiceLayout {
+    font-family: monospace;
+    font-size: 25px;
+}
+
+
+
+#startButton {
+    visibility: visible;
+    background-color: #008CBA;
+    text-align: center;
+    font-size: 20px;
+    font-family: monospace;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 12px;
+    
+}
+
+.startButton {
+    visibility: visible;
+    background-color: #008CBA;
+    text-align: center;
+    font-size: 25px;
+    font-family: monospace;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 12px;
+    
+}
+
+ 
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.fontsizeP {
+    font-size: 16px; 
+}
+
+
+
+img {
+    border: 5px solid black;
+}
+
+
+
+

@@ -1,0 +1,684 @@
+
+
+/* MAIN BODY of the annotation page */
+body {
+    background-color: #00BFFF;
+}
+
+
+
+/* SECTIONS */
+
+/* Use indent classes to put the image and annotation semantic forms sections side-by-side */
+.indent-1 {
+    float: left;
+    margin: 0 1.5%;
+    
+    
+}
+
+.indent-1 section {
+     width: 50%; float: left;
+}
+
+.indent-2 {
+    float: left;
+    margin: 0;
+   /* width: 50%; */
+    width: 40%;
+    height: 500px;
+}
+
+
+
+
+
+
+/* IMAGE SECTION - Section 1 */
+
+/* Comic page container class*/
+.container {
+    position: relative;
+    text-align: center;
+}
+
+
+/* Canvas */
+canvas{
+    border: 3px solid black;
+    cursor: crosshair;
+
+    /* There is the option to add the comic images as backgrounds
+     background: url("comicPages/Page1.jpeg"); */
+}
+
+
+
+
+
+
+/* SEMANTIC FORM SECTION - Section 2 */
+
+
+/* Add a vertical scroll to allow for scrolling while the image stays in place */
+.scroll {
+    width: 500px;
+    height: 700px;
+    overflow-x: auto;
+}
+
+
+
+/* Start Button and Page Num Indicator */
+
+#initialStartButtonContainer {
+    text-align: center;
+    width: 525px;
+}
+
+#startAnnotationButton {
+    visibility: visible;
+    display: none; 
+    background-color: #008CBA;
+    text-align: center;
+    font-size: 20px;
+    font-family: monospace;
+    border: none;
+    color: white;
+    padding: 15px;
+    margin: 1px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+
+
+/* Panel ID Instructions and Task Buttons */
+
+#panelIdSection {
+    display: none;
+    margin: 5px;
+    padding: 10px;
+    height: 200px;
+    text-align: center;
+    border-radius: 25px;
+    background-color: #87CEFA;
+    border: 5px solid #008CBA;
+}
+
+
+
+
+.panelIDButtons {
+    background-color: #004d66;
+    text-align: center;
+    font-size: 18px;
+    font-family: monospace;
+    border: none;
+    color: white;
+    padding: 15px;
+    margin: 5px; 
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.panelIDButtonsVersion2 {
+    background-color: #F0F8FF;
+    text-align: center;
+    font-size: 12px;
+    font-family: monospace;
+    border: none;
+    color: black;
+    padding: 15px;
+    margin: 1px; 
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+
+/* Individual Panel Task Buttons */
+
+#clearLastRectButton {
+    display: none;
+}
+
+#clearButton {
+    display: none;
+}
+
+#endButton {
+    display:  none;
+    
+}
+
+
+
+
+
+/* Panel Num Count and Instruction Section */
+
+/* "Panel" heading*/
+h3 {
+    margin-top: 0px;
+    margin-bottom: 3px;
+    font-family: monospace;
+    text-align: center;
+    font-size: 20px;
+    color: #004d66;
+}
+
+/* "Characters" and "Background" headings */
+h4 {
+    margin-top: 5px; 
+    margin-bottom: 3px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 14px;
+    color: #00394d;
+}
+
+
+
+#panelNumSection {
+    display: none;
+}
+
+
+.panelNumSectionFormat {
+    margin: 5px;
+    width: 475px;
+    text-align: center;
+    padding: 10px; /* 20px when char and locs display is there */
+    background-color: #008CBA;
+    height: 20px; /* 150px when char and locs display is there */
+    border-radius: 25px;
+    border: 5px solid #008CBA;
+}
+
+
+#panelCount {
+    margin-top: 0px; 
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    font-size: 14px;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+
+.listContainer {
+    display: none;
+}
+
+h2 {
+    font-size: 12px;
+    font-family: "Lucida Console", Monaco, monospace;
+    background-color: #b5e3ff;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.listLabel {
+    background-color:#b5e3ff;
+}
+
+.list1 {
+    float: left;
+    width: 45%;
+    border: 3px solid #b5e3ff;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.list2 {
+    float: right;
+    width: 45%;
+    border: 3px solid #b5e3ff;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+
+.cList {
+    display: table;
+    background: #b5e3ff;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    list-style-type: none;
+    font-size: 12px;
+    font-family: monospace;
+    text-align: center;
+    list-style-position: inside;
+}
+
+.lList {
+    display: table;
+    background: #b5e3ff;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    list-style-type: none;
+    font-size: 12px;
+    font-family: monospace;
+    text-align: center;
+    list-style-position: inside;
+}
+
+
+div.hidden {
+    display: none; 
+}
+
+
+#semanticFormContainer {
+    align: center;
+}
+
+.semanticFormContainerScroll {
+    overflow-y: auto;
+    height: 500px;
+}
+
+
+.semanticFormDisplay {
+    display: block;
+    border-radius: 25px;
+    background-color: #87CEFA;
+    border: 5px solid #008CBA;
+    padding: 20px;
+    margin: 2px;
+    width: 450px;
+}
+
+
+.charIDStopButton {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#submitToNextPage {
+    display: none; 
+}
+
+
+.charNumIndexForm {
+    display: inline-block;
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+    margin: 3px 0;
+    font-family: monospace;
+    border: 2px solid #C942FF;
+    border-radius: 10px;
+    background-color: #F5E0FC;
+}
+
+.charForms {
+    display: inline-block;
+    width: 400px;
+    padding: 5px;
+    margin: 3px 0;
+    border: 2px solid #7E06DA;
+    border-radius: 10px;
+    background-color: #D4B1EF;
+}
+
+.charFeaturesForms {
+    display: inline-block;
+    width: 360px;
+    padding: 5px;
+    margin: 3px 0;
+    border: 3px solid #A456E0;
+    border-radius: 10px;
+    background-color: #f6ebff;
+}
+
+.charIDSquareContainer {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    float: left;
+    padding-right: 10px;
+}
+
+.charIDSquare {
+    height: 50px;
+    width: 50px;
+    background-color: #A456E0;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 20px;
+    font-family: monospace;
+    color: white;
+    
+}
+
+.charAreasAndOrientationHeadingsContainer {
+    padding-top: 10px;
+}
+
+.areasDepictedHeading {
+    display: inline;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 14px;
+    color: #7E06DA;
+    padding-left: 10px;
+}
+
+.charOrientationHeading {
+    display: inline;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 14px;
+    color: #7E06DA;
+    padding-left: 50px;
+}
+
+.charBodyMapContainer {
+    float: left;
+}
+
+.charOrientationContainer {
+    display: inline-block;
+    padding-left: 10px;
+    /* height: 310px; */
+}
+
+.charReferenceTasksContainer {
+    
+}
+
+.charDescriptionContainer {
+    padding-left: 60px;
+}
+
+.charEmotionContainer {
+    padding-left: 60px;
+    padding-top: 8px;
+}
+
+
+.headingsInCharForm {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 14px;
+    color: #7E06DA;
+}
+
+.charImageFeaturesContainer {
+    display: inline-block;
+   /* padding-top: 5px; */
+    padding-left: 10px;
+    margin-right: 50px;
+}
+
+.selectAllCharBodyMapButton {
+    display: inline-block;
+    background-color: #A456E0;
+    color: white;
+    text-align: center;
+    font-size: 10px;
+    font-family: monospace;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 2px;
+}
+
+.clearAllCharBodyMapButton {
+    display: inline-block;
+    background-color: #A456E0;
+    color: white;
+    text-align: center;
+    font-size: 10px;
+    font-family: monospace;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+
+.likert li {
+    float: left;
+    list-style-type: none;
+}
+
+.imageDetailScaleLabels {
+    display: block;
+    text-align: left;
+    padding-left: 125px;
+    padding-bottom: 5px;
+}
+
+.imageDetailScaleIndividualLabels {
+    padding: 8px;
+}
+
+
+.charBodyMap {
+    width: 30px;
+    height: 40px;
+}
+
+
+.textForms {
+    width: 400px;
+    padding: 5px;
+    margin: 3px 0;
+    border: 2px solid #1BE300;
+    border-radius: 10px;
+    background-color: #DCFFD7;
+}
+
+input[type=text] {
+    margin: 5px 0;
+}
+
+
+.charFormInput {
+    width: 150px;
+}
+
+.charDescriptionInput {
+    width: 175px;
+}
+
+.charActionInput {
+    width: 200px;
+}
+
+.textSpeechInput {
+    width: 200px; 
+}
+
+.otherSpeechInput {
+    width: 200px; 
+}
+
+.locationDescriptionInput {
+    width: 200px;
+}
+
+input[type=radio] {
+    margin: 0 5px 0 5px;
+}
+
+label {
+    font-size: 13px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.semanticButtonsContainter {
+    width: 450px;
+    display:table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+/* charBodyMap Image styles */
+
+.headDiv {
+   position: absolute;
+   color: blue;
+}
+
+
+
+
+
+/* Page navigation buttons */
+
+.pageNavigationButtons {
+    background-color: #008CBA;
+    text-align: center;
+    font-size: 16px;
+    font-family: monospace;
+    border: none;
+    color: white;
+    padding: 16px;
+    margin: 25px;
+    margin-left: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+
+
+
+
+/* Background Sliders */
+
+.range {
+    padding-top: 10px;
+}
+
+.slider_value {
+    text-align: center;
+    position: relative;
+    background: whitesmoke;
+    padding: 10px 15px;
+    position: absolute;
+    border-radius: 5px;
+    transform: translateX(-50%);
+    visibility: hidden; /* hide this extra span */
+}
+
+.slider_value_span {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 12px;
+}
+
+.bubble {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 12px;
+    margin-bottom: 50px;
+    background: #ddd;
+    padding: 4px 12px;
+    position: absolute;
+    border-radius: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bubble::after {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 12px;
+    margin-bottom: 50px;
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #ddd;
+    top: -1px;
+    left: 50%;
+}
+
+
+.field {
+    text-align: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.range .field .value{
+    position: absolute;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+}
+
+.range .field input{
+    -webkit-appearance: none;
+    height: 5px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    width: 75%;
+}
+.range .field input::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: #664AFF;
+    border-radius: 50%;
+    border: 1px solid #664AFF;
+    cursor: pointer;
+}
+
+.value_left {
+    /* visibility: hidden; */
+    left: -30px; /* -22 */
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.value_right {
+    /* visibility: hidden; */
+    right: -50px; /* -43 */
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.sliderticks {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 48px;
+    /* padding-left: 200px; */
+    padding: 0 70px;
+    width: 47%;
+}
+
+.mainTicks {
+    position: relative;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 2px;
+    background: #D3D3D3;
+    height: 10px;
+    line-height: 40px;
+    margin: 0 0 20px 0;
+}
+
+.endTicks {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 20px;
+    line-height: 0px;
+}
+
+
+
